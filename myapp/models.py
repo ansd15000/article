@@ -5,7 +5,7 @@ from django.db import models
 # 기사 테이블 
 # 언론사 명(혹은 숫자), 기사 분류, 제목, 부제목, 기사 내용, 날짜, 이미지(저장해서 사용할 예정)
 class Article(models.Model):
-    id = models.AutoField(primary_key = True) # 안쓰면 자동으로 생성된다고 함
+    # id = models.AutoField(primary_key = True) # 안쓰면 자동으로 생성된다고 함
     news_agency = models.PositiveSmallIntegerField() # 0 ~ 32767 언론사는 숫자로 분류하자
     tag = models.CharField(max_length=10) # 기사분류
     title = models.CharField(max_length=70) # 기사제목
@@ -20,7 +20,7 @@ class Article(models.Model):
         return str(self.id)
 
 class ArticleImg(models.Model):
-    article = models.ForeignKey(Article, on_delete= models.CASCADE)
+    article = models.ForeignKey(Article, on_delete= models.CASCADE) # 기사 아이디. 
     articleImg = models.FileField(upload_to = 'articleImgs/', null= True) # match 로 정규식 조건줄수있음
     
     def __str__(self):
