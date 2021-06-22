@@ -8,8 +8,9 @@ class Article(models.Model):
     # id = models.AutoField(primary_key = True) # 안쓰면 자동으로 생성된다고 함
     news_agency = models.PositiveSmallIntegerField() # 0 ~ 32767 언론사는 숫자로 분류하자
     tag = models.CharField(max_length=10) # 기사분류
-    title = models.CharField(max_length=70) # 기사제목
-    subTitle = models.CharField(max_length=140) # 기사 부제목
+    title = models.CharField(max_length=200) # 기사제목
+    # subTitle = models.CharField(max_length=200, null= True) # 기사 부제목
+    subTitle = models.JSONField(null = True, default = dict, max_length = 200) # 대충 dict 타입으로 들어감.
     main = models.TextField() # 기사 내용
     date = models.DateField() # 날짜
     

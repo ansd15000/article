@@ -32,20 +32,27 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
 ]
+
+# CRONJOBS = [ 
+#     ('* * * * *', 'myapp.cron.newsCrawling', '>> /root/article/cronlog.log') #분 시 일 월 요일 # , '>> /root/article/cronlog.log'
+# ]
+# CRONTAB_COMMAND_SUFFIX = '2>&1'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware', # 테스트용으로 잠깐만
+    'django.middleware.csrf.CsrfViewMiddleware', # 테스트용으로 잠깐만
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,7 +92,7 @@ DATABASES = {
         'NAME': 'project', # 사용할 데이터베이스 이름 (mysql 내부의) 
         'USER': 'root',
         'PASSWORD': 'qlalfqjsgh123',
-        'HOST': 'localhost',
+        'HOST': '172.17.0.3',
         'PORT': '3306',
     }
 }
